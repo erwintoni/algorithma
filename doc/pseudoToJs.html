@@ -1,0 +1,87 @@
+<!-- saved from url=(0045)https://dl.dropbox.com/u/19752994/interp.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Pseudo-code To Javascript</title>
+<script type="text/javascript" src="../js/pseudoToJs.js"></script>
+<script type="text/javascript">
+function runConvert()
+{
+	var output = document.getElementById("input").value;
+	output = pseudoToJs(output);
+	document.getElementById('output').innerHTML = output;
+}
+function c2jEnableTab(e)
+{
+	//get key pressed
+	var key = null;
+	if(window.event) key = event.keyCode;
+	else if(e.which) key = e.which;
+
+	//if tab pressed
+	if(key != null && key == 9)
+	{
+		//IE
+		if(document.selection)
+		{
+			//get focus
+			this.focus();
+
+			//get selection
+			var sel = document.selection.createRange();
+
+			//insert tab
+			sel.text = "t";
+		}
+		//Mozilla + Netscape
+		else if(this.selectionStart || this.selectionStart == "0")
+		{
+			//save scrollbar positions
+			var scrollY = this.scrollTop;
+			var scrollX = this.scrollLeft;
+
+			//get current selection
+			var start = this.selectionStart;
+			var end = this.selectionEnd;
+
+			//insert tab  //CHANGED THIS "t" to "\t"------\/
+			this.value = this.value.substring(0,start) + "\t" + this.value.substring(end,this.value.length);
+
+			//move cursor back to insert point
+			this.focus();
+			this.selectionStart = start+1;
+			this.selectionEnd = start+1;
+
+			//reset scrollbar position
+			this.scrollTop = scrollY;
+			this.scrollLeft = scrollX;
+		}
+		//time for a new browser!!!
+		else this.value += "t";	
+
+		//stop the real tab press
+		return false;
+	}
+}
+function initialize() {
+	document.getElementById('input').onkeydown = c2jEnableTab;
+	document.getElementById('output').onkeydown = c2jEnableTab;
+}
+//run enableTab on page load, may have to change if running more scripts 
+window.onload = initialize;
+</script>
+
+
+
+</head>
+<body>
+<table>
+<tbody><tr><td>
+Input (Pseudo):<br>
+<textarea id="input" name="input" rows="30" cols="60"></textarea>
+
+</td>
+<td><button type="button" onclick="runConvert();">Convert</button></td>
+<td>
+Output (Javascript):<br>
+<textarea id="output" name="output" rows="30" cols="60">
+</textarea>
+</td></tr></tbody></table>

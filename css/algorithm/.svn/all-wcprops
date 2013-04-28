@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/trunk/!svn/ver/1494/css/algorithm
+END
+redblackStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/trunk/!svn/ver/1466/css/algorithm/redblackStyle.css
+END
+sequentialStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/trunk/!svn/ver/1461/css/algorithm/sequentialStyle.css
+END
+authorSimpleStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/trunk/!svn/ver/1494/css/algorithm/authorSimpleStyle.css
+END
+depthfirstStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/trunk/!svn/ver/1469/css/algorithm/depthfirstStyle.css
+END
+shakerStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/trunk/!svn/ver/1458/css/algorithm/shakerStyle.css
+END
+testStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/trunk/!svn/ver/1455/css/algorithm/testStyle.css
+END
+inOrder.css
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/trunk/!svn/ver/1482/css/algorithm/inOrder.css
+END
+breadthfirstStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/trunk/!svn/ver/1473/css/algorithm/breadthfirstStyle.css
+END
+avlStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/trunk/!svn/ver/1475/css/algorithm/avlStyle.css
+END
+selectionStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/trunk/!svn/ver/1464/css/algorithm/selectionStyle.css
+END
+heapsortStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/trunk/!svn/ver/1480/css/algorithm/heapsortStyle.css
+END
+priorityqueueStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/trunk/!svn/ver/1479/css/algorithm/priorityqueueStyle.css
+END
+primsStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/trunk/!svn/ver/1481/css/algorithm/primsStyle.css
+END
+authorComplexStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/trunk/!svn/ver/1493/css/algorithm/authorComplexStyle.css
+END
+bubbleStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/trunk/!svn/ver/1471/css/algorithm/bubbleStyle.css
+END
+recursivebinarytreeStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/trunk/!svn/ver/1468/css/algorithm/recursivebinarytreeStyle.css
+END
+authorStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/trunk/!svn/ver/1494/css/algorithm/authorStyle.css
+END
+authorBasicStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/trunk/!svn/ver/1492/css/algorithm/authorBasicStyle.css
+END
+binarytreeStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/trunk/!svn/ver/1474/css/algorithm/binarytreeStyle.css
+END
+stackStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/trunk/!svn/ver/1457/css/algorithm/stackStyle.css
+END
+criticalpathStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/trunk/!svn/ver/1470/css/algorithm/criticalpathStyle.css
+END
+insertionStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/trunk/!svn/ver/1483/css/algorithm/insertionStyle.css
+END
+gaussianStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/trunk/!svn/ver/1478/css/algorithm/gaussianStyle.css
+END
+quickStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/trunk/!svn/ver/1472/css/algorithm/quickStyle.css
+END
+heapStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/trunk/!svn/ver/552/css/algorithm/heapStyle.css
+END
+postOrderStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/trunk/!svn/ver/1488/css/algorithm/postOrderStyle.css
+END
+preorderStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/trunk/!svn/ver/1484/css/algorithm/preorderStyle.css
+END
+queueStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/trunk/!svn/ver/1476/css/algorithm/queueStyle.css
+END
+dijkstrasStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/trunk/!svn/ver/1467/css/algorithm/dijkstrasStyle.css
+END
+mergeStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/trunk/!svn/ver/1489/css/algorithm/mergeStyle.css
+END
+kruskalsStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/trunk/!svn/ver/1485/css/algorithm/kruskalsStyle.css
+END
+preorder.css
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/trunk/!svn/ver/1486/css/algorithm/preorder.css
+END
+linkedlistStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/trunk/!svn/ver/1487/css/algorithm/linkedlistStyle.css
+END
+2-3-4Style.css
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/trunk/!svn/ver/1477/css/algorithm/2-3-4Style.css
+END
+dequeStyle.css
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/trunk/!svn/ver/1442/css/algorithm/dequeStyle.css
+END

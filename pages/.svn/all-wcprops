@@ -1,0 +1,221 @@
+K 25
+svn:wc:ra_dav:version-url
+V 30
+/svn/trunk/!svn/ver/1535/pages
+END
+recursivebinarytree.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/trunk/!svn/ver/1398/pages/recursivebinarytree.php
+END
+merge.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/trunk/!svn/ver/1315/pages/merge.php
+END
+priorityq.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/trunk/!svn/ver/1442/pages/priorityq.php
+END
+author.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/trunk/!svn/ver/1513/pages/author.php
+END
+author_basic.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/trunk/!svn/ver/1533/pages/author_basic.php
+END
+deque.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/trunk/!svn/ver/1442/pages/deque.php
+END
+binarytree.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/trunk/!svn/ver/1499/pages/binarytree.php
+END
+redblack.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/trunk/!svn/ver/1414/pages/redblack.php
+END
+prim.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/trunk/!svn/ver/1309/pages/prim.php
+END
+insertion.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/trunk/!svn/ver/1529/pages/insertion.php
+END
+gaussian.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/trunk/!svn/ver/1496/pages/gaussian.php
+END
+quick.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/trunk/!svn/ver/1428/pages/quick.php
+END
+shaker.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/trunk/!svn/ver/1525/pages/shaker.php
+END
+test.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/trunk/!svn/ver/1509/pages/test.php
+END
+breadthfirst.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/trunk/!svn/ver/1445/pages/breadthfirst.php
+END
+postorder.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/trunk/!svn/ver/1523/pages/postorder.php
+END
+AVL.php
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/trunk/!svn/ver/1332/pages/AVL.php
+END
+preorder.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/trunk/!svn/ver/1524/pages/preorder.php
+END
+heapsort.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/trunk/!svn/ver/1535/pages/heapsort.php
+END
+selection.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/trunk/!svn/ver/1522/pages/selection.php
+END
+help.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/trunk/!svn/ver/1500/pages/help.php
+END
+bubble.php
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/trunk/!svn/ver/1172/pages/bubble.php
+END
+q.php
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/svn/trunk/!svn/ver/1442/pages/q.php
+END
+author_complexsort.php
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/trunk/!svn/ver/1528/pages/author_complexsort.php
+END
+inOrder.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/trunk/!svn/ver/1381/pages/inOrder.php
+END
+linkedlist.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/trunk/!svn/ver/1442/pages/linkedlist.php
+END
+stack.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/trunk/!svn/ver/1442/pages/stack.php
+END
+criticalpath.php
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/trunk/!svn/ver/1462/pages/criticalpath.php
+END
+234.php
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/svn/trunk/!svn/ver/1426/pages/234.php
+END
+about.php
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/trunk/!svn/ver/1532/pages/about.php
+END
+dijkstra.php
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/trunk/!svn/ver/1269/pages/dijkstra.php
+END
+kruskal.php
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/trunk/!svn/ver/1277/pages/kruskal.php
+END
+depthfirst.php
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/trunk/!svn/ver/1379/pages/depthfirst.php
+END
+heap.php
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/svn/trunk/!svn/ver/1278/pages/heap.php
+END
+seqsearch.php
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svn/trunk/!svn/ver/1394/pages/seqsearch.php
+END
+author_simplesort.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/trunk/!svn/ver/1527/pages/author_simplesort.php
+END

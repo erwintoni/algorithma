@@ -1,0 +1,548 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Array Intensive</title>
+
+<script type="text/javascript">
+var paramsPassed = new Array();
+// hack to only pull one function name
+var firstFuncOnly = 0;
+function c2jConvert(input)
+{
+	var output = document.getElementById("input").value;
+	//Do the replacements that can be done globally
+	var sizeC = /size\(\)/g;
+	output = output.replace(sizeC, "length");
+    var push = /push\_back/g;
+	output = output.replace(push, 'push');
+
+	//Get array name,
+	var endFirstLine = output.indexOf("\n");
+	var firstLine = output.substring(0, endFirstLine);
+	var arrayName = c2jGetArrayName(firstLine); // returns array name from func-definition "t["
+	//globally replace all instances of "t["
+
+	//Do the replacements that should be done line by line
+	var splitbyline = output.split("\n"); //split the code into individual lines
+	var funcNameSplit = output.split("\n"); //split the code into individual lines
+	var totallines = splitbyline.length; //get number of lines of code
+
+	for ( var i=0; i<totallines; i++ ) //process psuedo-code line at a time
+	{
+		funcNameSplit[i] = pullFuncName(funcNameSplit[i]);
+		splitbyline[i] = c2jConvertToFunction(splitbyline[i]); // deletes lines like "void insert(...)"
+		splitbyline[i] = assignToSlice(splitbyline[i]); // converts assign to slice
+		splitbyline[i] = c2jPlainVecToVar(splitbyline[i]); // converts 'vector result;' to 'var result = [];'
+		splitbyline[i] = c2jVecToVar(splitbyline[i]); // converts 'vector<int>' to 'var'
+		splitbyline[i] = c2jIntToVar(splitbyline[i]); // converts 'int|bool' to 'var'
+		splitbyline[i] = shiftConvert(splitbyline[i]); // converts 'int ele = right[0] to shift'
+		splitbyline[i] = killErase(splitbyline[i]); // converts 'int ele = right[0] to shift'
+		splitbyline[i] = intCast(splitbyline[i]); // converts 'int(...)' to 'parseInt(...)'
+		splitbyline[i] = EqualizeReturns(splitbyline[i]); // converts 'int(...)' to 'parseInt(...)'
+		splitbyline[i] = c2jAddSemiColon(splitbyline[i]); // adds semi-colons to lines that need them.
+		splitbyline[i] = addHL(splitbyline[i], i); 
+
+	}
+	output = splitbyline.join("\n"); //rejoin all the individual lines
+	var funcName = funcNameSplit.join('');
+	runThis = funcName;
+	document.getElementById('output').innerHTML = output;
+}
+function addHL(str, i)
+{
+	var keyWords = /function|if|for|while|return|else/;
+	var beginIndex = str.search(keyWords);
+
+	var tabs = str.substring(0, str.search(/\w/)); // record indentation
+	if (beginIndex == -1)
+	{
+		var checkcur = str.indexOf('{');
+		if (checkcur == -1) //no open curly
+		{
+ 			var tmpstr = tabs+"highlightadd("+i+");\n" + str;
+		}
+		else //yes open curly, highlight before
+		{
+ 			var tmpstr = str + "\n"+tabs+"highlightadd("+i+");";
+		}
+	}
+	else
+	{
+		var keyWords = /function|else/;
+		var beginIndex = str.search(keyWords);
+		if (beginIndex == -1) //it's not a function, highlight before
+		{
+ 			var tmpstr = tabs+"highlightadd("+i+");\n" + str;
+		}
+		else //it's a function, don't highlight
+		{
+ 			var tmpstr = str;
+		}
+	}
+	return tmpstr;
+}
+function pullFuncName(str)
+{
+	if (firstFuncOnly != 0)
+		return; // hackz!
+ 
+	var keyWords = /vector|void|short|double|string|long/; // black list of return types
+	var beginIndex = str.search(keyWords);
+	var varTypes = /int |bool |string |double |float |short |long /g; // black list of var types inside of parameters
+	var doubleCheck = str.search(/\(/); // make sure were on a function declaration 
+
+	if (beginIndex != -1 && doubleCheck != -1)
+	{
+		var tmpstr = str.replace(keyWords, ''); // trim function c++ return type
+		tmpstr = tmpstr.replace(varTypes, ''); // trim variable types for JS
+		tmpstr = tmpstr.replace(/^\s+|\s+$/g, ''); // trim whitespace
+		tmpstr = tmpstr.replace(/\<.+\>/, ''); // erases things like <int>, <anything inside here>
+		tmpstr = tmpstr.substring(0, tmpstr.indexOf('('));
+		tmpstr = tmpstr + '(unsorted)'
+		firstFuncOnly++; // hackz!
+	}
+	return tmpstr;
+}
+function c2jPlainVecToVar(str)
+{
+		var vectorChange = /vector\<int\> \w+/;
+		var vecIndx = str.search(vectorChange);
+		var checkeq = str.indexOf('=');
+		if (vecIndx != -1 && checkeq == -1) 
+		{
+			var tmp = str.replace('vector<int> ', ''); 
+			var tmp = str.replace(';', ''); 
+			var results = ""+tmp+" = [];"
+			str = results;
+		}
+	return str;
+}
+function EqualizeReturns(str)
+{
+	var replaceVar;
+	var theParam;
+	var assignIndex = str.indexOf('return');
+	if (assignIndex != -1)
+	{ 
+		var tabs = str.substring(0, str.search(/\w/)); // record indentation
+		var tmpstr = tabs + 'Equalize();\n' + str;
+		return tmpstr;
+	}
+	return str;
+}
+function killErase(str)
+{ // hack to get rid of .erase for special case in mergesort
+	var eraseIndex = str.indexOf('.erase(');
+	if (eraseIndex != -1)
+	{
+		str = '';
+	}
+	return str;
+}
+function shiftConvert(str)
+{
+	var types = /int|var|bool|double|string/;
+	var typeIndex = str.search(types);
+	var arrayOpIndex = str.indexOf('[0]'); // searches for special use of operator
+	var equalsIndex = str.indexOf('='); // make sure were in the right situation
+	if (typeIndex != -1 && arrayOpIndex != -1 && equalsIndex != -1)
+	{
+		var tabs = str.substring(0, str.search(/\w/)); // record indentation
+		var tmpstr = str.substring(equalsIndex + 1); // get the string after '='
+		tmpstr = tmpstr.replace('[0];', ''); // get rid of [] operator
+		tmpstr = tmpstr.replace(/^\s+|\s+$/g, ''); // trim whitespace
+		var front = str.substring(0, equalsIndex); // get left of '='
+		front = front.replace(/^\s+|\s+$/g, ''); // trim whitespace
+		str = tabs + front + ' = ' + tmpstr + '.shift();\nMoveSecond('+front.replace('var ', '')+');'; // build JS
+	}
+	return str;
+}
+function assignToSlice(str)
+{ // worlds longest function to convert '.assign(...' to .slice(...'
+	var replaceVar;
+	var theParam;
+	var assignIndex = str.indexOf('assign');
+	if (assignIndex != -1)
+	{ // found '.assign(...)'
+		var data = str.substring(str.indexOf('(')+1, str.indexOf(')'));
+		for (var i = 0; i < paramsPassed.length; i++)
+		{ // loop through the paramaters found in function declarations
+
+			var sub = 0; // var to check if we have replaced something
+			for (var j = 0; j < 3; j++)
+			{ // loop through all cases we could encounter (could be more)
+				// convert string to regexp object
+				var tmp = paramsPassed[i].replace(/^\s+|\s+$/g,"");
+				replaceVar = paramsToRegEx(tmp, j); // trim whitespace
+				// could make this routine into a function?
+				if (data.search(replaceVar) != -1 && j == 0)
+				{ // found 'vec+'
+					data = data.replace(replaceVar, '0+');
+					sub++;
+				}
+				else if (data.search(replaceVar) != -1 && j == 1)
+				{ // found 'vec '
+					data = data.replace(replaceVar, '0');
+					sub++;
+				}
+				else if (data.search(replaceVar) != -1 && j == 2)
+				{ // found 'vec,'
+					data = data.replace(replaceVar, '0,');
+					sub++;
+				}
+				if (sub)
+				{ // if we have repalced something, do this stuff
+					theParam = paramsPassed[i]; // save for joining string
+					theParam = theParam.replace(/^\s+|\s+/g, ""); // trim whitespace
+					theParam = ' ' + theParam; // add one space before for clarity
+				}
+			}
+		}
+		str = str.substring(0, str.indexOf('('));
+		str = str.replace('.assign', ' =.slice');
+		str = str.split('=');
+		str[1] = theParam + str[1]; // 'arrName.slice'
+		var returnStr = str.join('=');
+		var arrName = str[0].replace(/^\s+|\s+/g, "");
+		returnStr = returnStr + '(' + data + ');\n'+"MoveArray("+arrName+", '"+arrName+"');";
+		return returnStr;
+	}
+	return str;
+}
+function paramsToRegEx(str, i)
+{ // utility function to convert strings to regexp objects for assignToSlice()
+	// could probably be expanded, but assignToSlice then needs to be adjusted 
+	var tmp = str;
+	if (i == 0)
+	{
+		tmp = tmp + '\\+';
+	}
+	if (i == 1)
+	{
+		tmp = tmp + '\\s';
+	}
+	if (i == 2)
+	{
+		tmp = tmp + '\\,';
+	}
+	var regex = new RegExp(tmp, 'g');
+	return regex;
+
+}
+function intCast(str)
+{ // removes int() and turns into parseInt()
+	var typeCast = /int/;
+	var castIndex = str.search(typeCast);
+	var parenthIndex = str.search(/\(/);
+
+	if (castIndex != -1 && parenthIndex != -1)
+	{
+		var tmpstr = str.split('int');
+		str = tmpstr.join('parseInt');
+	}
+	return str;
+}
+function testVarChange(str, arrayName)
+{
+	var output = str.split(arrayName);
+	var temp = output.join("naUnsorted[");
+	return output;
+}
+function c2jAddSemiColon(str)
+{
+	var keywords = /for|while|if|else|function/;
+	var chars = /;|{|}/;
+
+	indx1 = str.search(keywords);
+	if (indx1 == -1)
+	{ // line doesnt contain blacklist words
+		indx2 = str.search(chars);
+		if (indx2 == -1)
+		{ // line doesnt contain blacklist chars
+			indx3 = str.search(/\w/);
+			if (indx3 != -1)
+			{ // probably useless?
+				if (str.length > 0) 
+				{ // line needs a semicolon, add it
+					str = str + ';';
+				}
+			}
+		}
+	}
+	return str;
+}
+function getParams(str)
+{ // a utility function for finding params passed to functions
+	var params = str.replace(/\(|\)/g, '');
+	var commaIndex = params.indexOf(',');
+	var tmpstr = new Array();; 
+	if (commaIndex != -1)
+	{
+		params = params.split(',');
+		for (var i = 0; i < params.length; i++)
+		{
+		//	params[i].replace(/^\s+|\s+/g, ""); // trim whitespace at beginning and end of varnames
+			tmpstr[i] = params[i];
+		}
+	}
+	else
+	{
+		tmpstr.push(params);
+	}
+	for (var i = 0; i < tmpstr.length; i++)
+	{
+		paramsPassed.push(tmpstr[i]);
+	}
+}
+function c2jConvertToFunction(str)
+{
+	//convert to javascript "function bubbleSort()"
+	var keyWords = /vector\<int\>|void|short|double|string|long/;
+	var killWords = /int |var |\[\]/g;
+	var beginIndex = str.search(keyWords);
+	var doubleCheck = str.search(/\(/); 
+
+	var data = '';
+	if (beginIndex != -1 && doubleCheck != -1) //found 'void'
+	{
+		//get parameters being passed (int arr[])
+		var tmpstr = str.replace(/^\s+/, ''); // trim whitespace at beginning
+		data = tmpstr.substring(tmpstr.indexOf('('));
+		data = data.replace(killWords, '');
+
+		// finc params passed to each function
+		getParams(data);
+
+		//get function name from line
+		var funcName = str.replace(/\w+/, '');
+		funcName = funcName.replace('<int>', ''); // remove '<int>' from function dec.
+		funcName = funcName.substring(0, funcName.indexOf('('));
+		data = "function" + funcName + data;
+		return data;
+	}
+	else
+	{	
+		return str;
+	}
+}
+function c2jFuncName(str)
+{
+	var keyWords = /vector|void|short|double|string|long/;
+	var beginIndex = str.search(keyWords);
+	var varTypes = /int |bool |string |double |float |short |long /g;
+	var doubleCheck = str.search(/\(/); 
+	
+	if (beginIndex != -1 && doubleCheck != -1)
+	{
+		var tmpstr = str.replace(keyWords, ''); // trim c++ type declaration
+		tmpstr = tmpstr.replace(varTypes, '');
+		tmpstr = tmpstr.replace(/^\s+/, ''); // trim whitespace
+		var paramSplit = tmpstr.indexOf(',');
+		var addParam = ', naUnsorted.length)' // simpler than hardcoding a string
+		if (paramSplit != -1)
+		{
+			var arrayDeclared = tmpstr.indexOf('[');
+			if (arrayDeclared != -1)
+			{
+				tmpstr = tmpstr.substring(0, arrayDeclared);
+			}
+			tmpstr = tmpstr + addParam;
+		}
+	}
+	return tmpstr;
+}
+function c2jGetArrayName(str)
+{
+	var keyWords = /void|short|double|string|long/;
+	var funcIndex = str.search(keyWords);
+	var doubleCheck = str.search(/\(/); 
+
+	if (funcIndex != -1 && doubleCheck != -1) //found 'void'
+	{
+		var beginIndex = -1;
+		var endIndex = -1;
+		var tmpstr = '';
+		beginIndex = str.indexOf("("); // find the start of parameters passed
+		endIndex = str.indexOf("]"); // find the end of the array's name
+		var keyWords = /int|double|string/; // words to be replaced in front of array name
+
+		if (beginIndex != -1 && endIndex != -1)
+		{	// found first line of a function
+			tmpstr = str.substring(beginIndex + 1, endIndex)
+			var arrayName = tmpstr.replace(keyWords, ""); // trim c++ keywords
+			var arrayName = arrayName.replace(/^\s+|\s+/g, ""); // trim whitespace and leave only "t["
+		}
+	}
+	return arrayName;
+}
+function c2jVecToVar(str)
+{
+	var vectorChange = "vector<int>";
+	var vecIndx = str.indexOf(vectorChange);
+	var varNames = '';
+	if (vecIndx != -1) 
+	{
+		var tabs = str.substring(0, vecIndx);
+		varNames = str.substring(vecIndx + 12);
+		var results = tabs + 'var ' + varNames;
+		str = results;
+	}
+	return str;
+}
+function c2jIntToVar(str) 
+{
+	var results = str;
+	var beginIndex = -1;
+	var varNames = "";
+
+	beginIndex = str.search(/int|bool/);
+	if (beginIndex != -1)
+	{
+		var tabs = str.substring(0, beginIndex);
+		varNames = str.substring(beginIndex + 4);
+		var results = tabs + 'var ' + varNames;
+		str = results;
+	}
+	return str;
+}
+function c2jConvertForLoops(str)
+{
+	var beginIndex = -1;
+	var endIndex = -1;
+	var data = "";
+	
+	beginIndex = str.indexOf('for');
+	if (beginIndex != -1)
+	{
+		var tmpIndex = beginIndex + 3;
+		var tabs = str.substring(0, beginIndex + 3);
+
+		var notFor = str.substring(tmpIndex);
+		var pieces = notFor.split(';');
+		var mid = pieces[1].split(' ');
+
+		mid[3] = "naUnsorted." + mid[3];
+		pieces[1] = mid.join(' ');
+		str = tabs + ' ' + pieces.join(';');
+	}
+	
+	return str;
+}
+function c2jEnableTab(e)
+{
+	//get key pressed
+	var key = null;
+	if(window.event) key = event.keyCode;
+	else if(e.which) key = e.which;
+
+	//if tab pressed
+	if(key != null && key == 9)
+	{
+		//IE
+		if(document.selection)
+		{
+			//get focus
+			this.focus();
+
+			//get selection
+			var sel = document.selection.createRange();
+
+			//insert tab
+			sel.text = "t";
+		}
+		//Mozilla + Netscape
+		else if(this.selectionStart || this.selectionStart == "0")
+		{
+			//save scrollbar positions
+			var scrollY = this.scrollTop;
+			var scrollX = this.scrollLeft;
+
+			//get current selection
+			var start = this.selectionStart;
+			var end = this.selectionEnd;
+
+			//insert tab  //CHANGED THIS "t" to "\t"------\/
+			this.value = this.value.substring(0,start) + "\t" + this.value.substring(end,this.value.length);
+
+			//move cursor back to insert point
+			this.focus();
+			this.selectionStart = start+1;
+			this.selectionEnd = start+1;
+
+			//reset scrollbar position
+			this.scrollTop = scrollY;
+			this.scrollLeft = scrollX;
+		}
+		//time for a new browser!!!
+		else this.value += "t";	
+
+		//stop the real tab press
+		return false;
+	}
+}
+function initialize() {
+	document.getElementById('input').onkeydown = c2jEnableTab;
+	document.getElementById('output').onkeydown = c2jEnableTab;
+}
+//run enableTab on page load, may have to change if running more scripts 
+window.onload = initialize;
+</script>
+
+
+
+</head>
+<body>
+<table>
+<tbody><tr><td>
+Input (c++):<br>
+<textarea id="input" name="input" rows="30" cols="60">vector<int> mergeSort(vec) 
+{ 
+	if (vec.size() < 2) 
+	{ 
+		return vec; 
+	} 
+	int middle = int(vec.size() / 2); 
+	vector<int> left; 
+	vector<int> right; 
+	left.assign(vec, vec+middle); 
+	right.assign(vec+middle, vec+vec.size()); 
+	return merge(mergeSort(left), mergeSort(right)); 
+} 
+vector<int> merge(left, right) 
+{ 
+	vector<int> result; 
+	while (left.size() && right.size())  
+	{ 
+		if (left[0] <= right[0])  
+		{ 
+			int ele = left[0]; 
+			left.erase(left.begin()); 
+			result.push_back(ele); 
+		}  
+		else  
+		{ 
+			int ele = right[0]; 
+			right.erase(right.begin()); 
+			result.push_back(ele); 
+		} 
+	} 
+	while (left.size()) 
+	{ 
+		int ele = left[0]; 
+		left.erase(left.begin()); 
+		result.push_back(ele); 
+	} 
+	while (right.size()) 
+	{ 
+		int ele = right[0]; 
+		right.erase(right.begin()); 
+		result.push_back(ele); 
+	} 
+	return result; 
+}</textarea>
+
+</td>
+<td><button type="button" onclick="c2jConvert();">Convert</button></td>
+<td>
+Output (Javascript):<br>
+<textarea id="output" name="output" rows="30" cols="60">
+</textarea>
+</td></tr></tbody></table>

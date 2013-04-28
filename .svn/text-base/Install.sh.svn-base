@@ -1,0 +1,38 @@
+#####################################################
+#	{AlgorithmA}; 2010 Setup
+#	Project Manager: Patrick O'Connor
+#	Server Team: Neil Banerjee, Marlo Aragon
+#	OS: CentOS 5.4
+#	Iteration 1
+#
+#	This script will install the AlgorithmA 
+#	 package onto a new CentOS machine
+#
+#	This is not the development server setup
+#####################################################
+
+echo -e "\tSetting up Necessary Packages\n"
+sleep 2
+yum -y update
+yum -y install httpd php  php-xml  mod_ssl mod_perl
+
+echo -e "\tStarting Services\n"
+sleep 2
+chkconfig http on
+service httpd restart
+
+
+echo -e "\tCopy over algo folder to webroot\n"
+sleep 2
+mkdir /var/www/html/algo
+#cp svn/* /var/www/html/algo
+echo -e "\tNow changing ownership of algo directory\n"
+sleep 2
+chown apache:root /var/www/html/algo	
+
+echo -e "\tNow extracting algo to webroot: /var/www/html/algo\n"
+tar -xzvf ~/algo2011.tar.gz /var/www/html/algo
+
+echo -e "\tAlgorithmA has been installed\n\tPlease open a browser and go to \
+	 http://localhost/algo/\n\tto view the AlgorithmA 2010 project"
+sleep 2

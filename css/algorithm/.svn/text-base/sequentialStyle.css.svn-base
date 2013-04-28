@@ -1,0 +1,62 @@
+/*
+	Name:		Student One, Student Two, Team (One/Two)
+	Project:	{AlgorithmA}; 2011
+	File:		sequentialStyle.css
+	Created:	2011.xx.xx
+
+	Modified By:	Student Name, Team (One/Two)
+	Modified:	2011.xx.xx
+	
+	Commented By:	Christopher Huerta, Documentation Team
+	Commented:	2011.03.16
+*/
+
+#algo-table
+{
+	height: 300px;
+}
+
+#algo-table td
+{
+	vertical-align: middle;
+}
+
+.workarea
+{
+	position:relative;
+	width: auto;
+	height: auto;
+}
+
+.psuedocode pre
+{
+	vertical-align: middle;
+}
+
+.psuedocode pre div
+{
+	display: inline;
+}
+
+#level0{
+  display: block;
+}
+#level1{
+  display: block;
+}
+#level2{
+  display: block;
+}
+.image{
+  display: inline;
+  text-align: center;
+  position:relative;
+}
+.image .text{
+  display: inline;
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: -25px;
+  left: 25px;
+}

@@ -1,0 +1,60 @@
+/*
+	Name:		Evan Plett, Team (One/Two)
+	Project:	{AlgorithmA}; 2011
+	File:		primsStyle.css
+	Created:	2011.xx.xx
+
+	Modified By:	Student Name, Team (One/Two)
+	Modified:	2011.xx.xx
+	
+	Commented By:	Christopher Huerta, Documentation Team
+	Commented:	2011.03.16
+*/
+
+.main-controls button
+{
+	height: 50px;
+	width: 100px;
+}
+
+#algo-table
+{
+	height: 500px;
+}
+
+#algo-table td
+{
+	vertical-align: top;
+}
+
+.workarea
+{
+	position: relative;
+}
+
+.line
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 1;
+}
+
+.node
+{
+	position: absolute;
+	height: 17px;
+	width: 17px;
+	padding: 0;
+	z-index: 1;
+}
+
+.lineWeight
+{
+	position: absolute;
+	height: 19px;
+	width: 19px;
+	padding: 0;
+	z-index: 1;
+	text-align: center;
+}

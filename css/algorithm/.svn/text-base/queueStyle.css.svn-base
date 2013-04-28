@@ -1,0 +1,32 @@
+/*
+	Name:		Student One, Student Two, Team (One/Two)
+	Project:	{AlgorithmA}; 2011
+	File:		queueStyle.css
+	Created:	2011.xx.xx
+
+	Modified By:	Student Name, Team (One/Two)
+	Modified:	2011.xx.xx
+	
+	Commented By:	Christopher Huerta, Documentation Team
+	Commented:	2011.03.16
+*/
+
+#algo-table
+{
+	height: 200px;
+}
+
+.psuedocode pre div{
+  display: inline;
+  text-align: center;
+  position: relative;
+}
+.image{
+  position:relative;
+}
+.image .text{
+  color: blue;
+  position: absolute;
+  top: 45px;
+  left: 50px;
+}

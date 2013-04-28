@@ -1,0 +1,31 @@
+/*
+	Name:		Student One, Student Two, Team (One/Two)
+	Project:		{AlgorithmA}; 2011
+	File:		binarytreeStyle.css
+	Created:		20XX.XX.XX
+
+	Modified By:	Student Name, Team (One/Two)
+	Modified:		20XX.XX.XX
+	
+	Commented By:	Juan Vidart, Documentation Team
+	Commented:	2011.03.16
+*/
+.image{
+  position:relative;
+  height: 50px; 
+  width: 50px;
+}
+.image .text{
+  position:relative; 
+  top:-40px; 
+  left:20px;
+  color: yellow;
+
+  }
+#bottombox
+{
+border: 5px solid gray;
+margin: 20px auto;
+width:200px;
+height:30px;
+}

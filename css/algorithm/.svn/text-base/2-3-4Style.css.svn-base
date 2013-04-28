@@ -1,0 +1,59 @@
+/*
+	Name:		Danny Vargas
+	Project:		{AlgorithmA}; 2011
+	File:		234Style.css
+	Created:		20XX.XX.XX
+
+	Modified By:	Student Name, Team (One/Two)
+	Modified:		20XX.XX.XX
+	
+	Commented By:	Juan Vidart, Documentation Team
+	Commented:	2011.03.16
+*/
+
+#algo-table
+{
+	height: 350px;
+}
+
+.workarea
+{
+	position: relative;
+}
+
+.plain-box-style
+{
+	position: absolute;
+	height: 100px;
+	width:	100px;
+	padding: 0;
+	
+	border: 2px black solid;
+	background-color: red;
+}
+
+#box1
+{
+	left: 0px;
+	top: 10px;
+	z-index: 1;
+}
+
+#box2
+{
+	left: 150px;
+	top: 10px;
+	z-index: 2;
+	
+	background-color: blue;
+}
+
+#box3
+{
+	left: 300px;
+	top: 10px;
+	z-index: 3s;
+	
+	background-color: green;
+}
+

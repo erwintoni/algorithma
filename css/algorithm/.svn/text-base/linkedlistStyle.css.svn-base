@@ -1,0 +1,23 @@
+
+/*
+	Name:		Evan Plett
+	Project:		{AlgorithmA}; 2010
+	File:		linkedlistStyle.css
+	Created:		20XX.XX.XX
+
+	Modified By:	Student Name, Team (One/Two)
+	Modified:		20XX.XX.XX
+	
+	Commented By:	Juan Vidart, Documentation Team
+	Commented:	2011.03.16
+*/
+#algo-table
+{
+	height: 350px;
+}
+
+#rowHold
+{
+	width:100px;
+	height:250px;
+}

@@ -1,0 +1,25 @@
+/*    
+    Name:		Kenneth Williams, Anthony Phillips, Team Two
+    Project:		{AlgorithmA}; 2011
+    File:		recursivebinarytree.css
+    Created:		2011.XX.XX
+
+    Modified By:	Kenneth Williams, Anthony Phillips, Team Two
+    Modified:		2011.XX.XX
+
+    Commented By:	Juan Vidart, Documentation Team
+    Commmented:		2011.02.28
+*/
+	
+.image{
+  position:relative;
+  height: 50px; 
+  width: 50px;
+}
+.image .text{
+  position:relative; 
+  top:-40px; 
+  left:20px;
+  color: yellow;
+
+  }

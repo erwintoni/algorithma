@@ -1,0 +1,154 @@
+/*
+*******************************************************************************
+* This is an example of the css file and how to set up the start 
+* postions for objects that will be moving in your animation
+* Once again please look at animation of other algorithms to make for more help.
+*
+* images will be images/algorithm/nameofalgorithm/images.png
+* 
+* This file should be nameofalgorithm.css
+* 
+* Also this file should be kept in /css/algorithm/nameofalgorithm.css
+*
+* Also please add names to this page so we know who programmed what.
+********************************************************************************
+
+	Name:		Student One, Student Two, Team (One/Two)
+	Project:	{AlgorithmA}; 2011
+	File:		preorder.css
+	Created:	2011.xx.xx
+
+	Modified By:	Student Name, Team (One/Two)
+	Modified:	2011.xx.xx
+	
+	Commented By:	Student Name, Documentation Team
+	Commented:	2011.xx.xx
+
+#algo-table
+{
+	height: 350px;
+}
+
+#algo-table .psuedocode
+{	
+	width: 32%;
+	vertical-align: middle;
+}
+
+.work_area
+{
+	position: relative;
+}   
+.plain-box-style
+{
+	position: absolute;
+	padding: 0;
+}
+
+.box
+{
+    background-color:#0000E0;
+    width:45px;
+    height:45px;
+    font-weight:bold;
+    font-size:35px;
+    text-align:center;
+    color:white;
+    vertical-align:middle;
+    display:table-cell;
+    position:absolute;
+    padding: 0;
+}
+
+.pivot
+{
+    width:45px;
+    height:45px;
+    font-weight:bold;
+    font-size:20px;
+    text-align:center;
+    vertical-align:bottom;
+    display:table-cell;
+    position:absolute;
+    padding: 0;
+	z-index: 1;
+}
+
+#box0
+{
+    left: 65px;
+    top: 175px;
+}
+
+#box1
+{
+    left: 115px;
+    top: 175px;
+}
+
+#box2
+{
+    left: 165px;
+    top: 175px;
+}
+
+#box3
+{
+    left: 215px;
+    top: 175px;
+}
+
+#box4
+{
+    left: 265px;
+    top: 175px;
+}
+
+#box5
+{
+    left: 315px;
+    top: 175px;
+}
+
+#box6
+{
+    left: 365px;
+    top: 175px;
+}
+
+#box7
+{
+    left: 415px;
+    top: 175px;
+}
+
+#box8
+{
+    left: 465px;
+    top: 175px;
+}
+
+#box9
+{
+    left: 515px;
+    top: 175px;
+}
+
+#box10
+{
+    left: 65px;
+    top: 100px;
+}
+
+#box10
+{
+    left: 273px;
+    top: 50px;
+}
+
+#box11
+{
+    left: 290px;
+    top: 75px;
+}
+*/

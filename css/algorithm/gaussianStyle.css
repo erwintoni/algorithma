@@ -1,0 +1,87 @@
+/*
+	Name:		Student One, Student Two, Team (One/Two)
+	Project:		{AlgorithmA}; 2011
+	File:		nameofalgorithm.css
+	Created:		20XX.XX.XX
+
+	Modified By:	Student Name, Team (One/Two)
+	Modified:		20XX.XX.XX
+	
+	Commented By:	Juan Vidart, Documentation Team
+	Commented:	2011.03.16
+*/
+
+#algo-table
+{
+	height: 350px;
+}
+
+#algo-table .psuedocode
+{	
+	/*width: 45%;*/
+	vertical-align: middle;
+}
+
+.tab_container
+{
+	width: 350px !important;
+}
+
+#matrix
+{
+    border-collapse: collapse;
+    margin: auto;
+    margin-top: 30px !important;
+}
+
+#matrix td
+{
+    padding: 0 4px 4px 0;
+}
+
+.last-col
+{
+    border-left: dashed 1px #00529b;
+    padding-left: 4px !important;
+}
+
+.last-row td
+{
+    padding-bottom: 0 !important;
+}
+
+#matrix tr td input[type="text"]
+{
+    height: 50px;
+    line-height: 50px; /* Vertically align for IE */
+    outline: none; /* Remove outline when focused for Safari */
+    text-align: center;
+    width: 50px;
+}
+
+.element
+{
+    background-color: #bde5f8;
+    border: solid 1px #00529b;
+    color: #00529b;
+}
+
+.destination
+{
+    background-color: #dff2bf;
+    border: solid 1px #4f8a10;
+    color: #4f8a10;
+}
+
+.source
+{
+    background-color: #feefb3;
+    border: solid 1px #9f6000;
+    color: #9f6000;
+}
+
+/* Error
+ * background-color: #ffbaba;
+ * border: solid 1px #d8000c;
+ * color: #d8000c;
+ */
